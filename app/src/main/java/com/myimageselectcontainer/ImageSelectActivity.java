@@ -40,14 +40,11 @@ import com.myimageselectcontainer.click.OnItemClickListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 
 public class ImageSelectActivity extends AppCompatActivity implements OnItemClickListener,
@@ -121,13 +118,10 @@ public class ImageSelectActivity extends AppCompatActivity implements OnItemClic
     private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             mProgressDialog.dismiss();
-            if (msg.what == 0x110) {
-                //绑定数据
-                setData();
-            } else {
-                if (mThread != null && !mThread.isInterrupted()) {
-                    mThread.isInterrupted();
-                }
+            //绑定数据
+            setData();
+            if (mThread != null && !mThread.isInterrupted()) {
+                mThread.isInterrupted();
             }
         }
     };
@@ -489,8 +483,6 @@ public class ImageSelectActivity extends AppCompatActivity implements OnItemClic
                 mDirPaths = null;
                 // 通知Handler扫描图片完成
                 mHandler.sendEmptyMessage(0x110);
-            } else {
-                mHandler.sendEmptyMessage(0x120);
             }
         }
     }
