@@ -481,9 +481,9 @@ public class ImageSelectActivity extends AppCompatActivity implements OnItemClic
                 }
                 mCursor.close();
                 mDirPaths = null;
-                // 通知Handler扫描图片完成
-                mHandler.sendEmptyMessage(0x110);
             }
+            // 通知Handler扫描图片完成
+            mHandler.sendEmptyMessage(0x110);
         }
     }
 }
